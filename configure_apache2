@@ -1,0 +1,7 @@
+---
+- name: Calling all the Child Playbooks using Roles
+  hosts: server
+  roles:
+    - apache2
+
+...

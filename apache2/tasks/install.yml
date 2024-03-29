@@ -1,0 +1,5 @@
+- name: Installing apache2
+  apt:
+    name: "{{pkg1}}"
+    state: "{{state1}}"
+    update_cache: "{{cache1}}"  

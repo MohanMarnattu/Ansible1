@@ -1,0 +1,9 @@
+---
+# tasks file for apache2
+- name: Configuring Apache2 using Roles
+  include_tasks: "{{item}}"
+  with_items:
+    - install.yml
+    - configure.yml
+    - url_check.yml
+...      

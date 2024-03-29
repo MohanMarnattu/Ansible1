@@ -1,0 +1,5 @@
+- name: Editing The content of the file
+  copy:
+    content: "{{content}}"    
+    dest: "{{dest}}"  
+  notify: Restart apache2 server    

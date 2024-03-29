@@ -1,0 +1,11 @@
+---
+# vars file for apache2
+pkg1: apache2
+state1: present
+cache1: yes
+content: "Mohan Welcome YOU"
+dest: /var/www/html/index.html
+state2: restarted
+url1: "http://172.31.82.237"
+code1: 200
+url2: "http://172.31.86.49"

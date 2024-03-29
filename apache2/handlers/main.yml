@@ -1,0 +1,10 @@
+---
+# handlers file for apache2
+- name: Restart apache2 server
+  uri: 
+    url: "{{item.a}}"
+    status_code: "{{item.b}}"
+  with_items:
+    - {a: "{{url1}}",b: "{{code1}}"}
+    - {a: "{{url2}}",b: "{{code1}}"}    
+      
