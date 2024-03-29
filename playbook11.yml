@@ -1,0 +1,40 @@
+---
+- name: Implementing or Installing Jenkins using Playbooks
+  hosts: jenkins
+  tasks: 
+    - name: Installing required softwares
+      apt: 
+        name: "{{item.a}}" 
+        state: "{{item.b}}"
+        update_cache: "{{item.c}}"
+      with_items: 
+        - {a: openjdk-11-jdk,b: present,c: yes}
+        - {a: git,b: present,c: no}
+        - {a: maven,b: present,c: no}
+    - name: INstalling jenkins using link
+      get_url:
+        url: https://get.jenkins.io/war-stable/2.440.2/jenkins.war
+        dest: /home/ubuntu      
+
+- name: INstalling all the Required softwares for tomcat9 and admin
+  hosts: server 
+  tasks: 
+    - name: Installing tomcat9 and tomcat9-admin
+      apt:
+        name: "{{item.a}}"
+        state: "{{item.b}}"
+        update_cache: "{{item.c}}"
+      with_items:
+        - {a: tomcat9,b: present,c: yes}
+        - {a: tomcat9-admin,b: present,c: no}
+    - name: Editing the file
+      copy:
+        src: tomcat-users.xml
+        dest: /etc/tomcat9/     
+      notify: Restart the server
+  handlers:
+    - name: Restart the server
+      service:
+        name: tomcat9
+        state: restarted 
+...

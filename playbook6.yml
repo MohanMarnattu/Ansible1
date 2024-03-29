@@ -1,0 +1,13 @@
+---
+- name: using host-scope varibles
+  hosts: 172.31.82.237
+  tasks:
+    - name: Implementing
+      user:
+        name: "{{a}}"
+        password: "{{b}}"
+        uid: "{{c}}"
+        home: "{{d}}"
+        shell: "{{e}}"
+        comment: "{{f}}"
+...

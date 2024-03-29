@@ -1,0 +1,15 @@
+---
+- name: Using play-scope varibles
+  hosts: all
+  become: yes
+  vars:
+    - a: git
+    - b: absent
+    - c: no
+  tasks:
+    - name: pass varibles
+      apt:
+        name: "{{a}}"
+        state: "{{b}}"
+        update_cache: "{{c}}"
+...          

@@ -1,0 +1,12 @@
+---
+- name: Executing the when condition in ansible
+  hosts: all
+  vars: 
+    - a: 10
+  tasks:
+    - name: Implementing the when conditions
+      copy: 
+        src: /etc/passwd
+        dest: /home/ubuntu
+      when: a==10    
+... 

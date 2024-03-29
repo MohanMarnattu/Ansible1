@@ -1,0 +1,26 @@
+---
+- name: Configuring apache2
+  hosts: all
+  tasks:
+    - name: install required s/ws
+      apt: 
+        name: "{{item.a}}"
+        state: "{{item.b}}"
+        update_cache: "{{item.c}}"
+      with_items:
+        - {a: apache2,b: present,c: yes} 
+
+    - name: editing the content
+      copy:
+        content: "hello"
+        dest: /var/www/html/index.html      
+
+    - name: restarting the service
+      service:
+        name: apache2
+        state: restarted
+    - name: checking url connection
+      uri:
+        url: http://172.31.82.237
+        status_code: 200
+...      

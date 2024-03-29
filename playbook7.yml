@@ -1,0 +1,21 @@
+---
+- name: Implementing tags
+  hosts: all
+  tasks:
+    - name: Tags getting started
+      apt: 
+        name: maven
+        state: present
+        update_cache: yes
+      tags: maven    
+    - name: Tags for copying
+      copy:
+        src: /etc/passwd
+        dest: /home/ubuntu    
+      tags: copy  
+    - name: without tags
+      apt: 
+        name: git
+        state: absent
+        update_cache: no  
+...

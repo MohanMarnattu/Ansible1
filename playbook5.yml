@@ -1,0 +1,10 @@
+---
+- name: Trying Host-scope varible on group of hosts
+  hosts: server
+  tasks:
+    - name: implementing it
+      apt: 
+        name: "{{a}}"
+        state: "{{b}}"
+        update_cache: "{{c}}"
+...
